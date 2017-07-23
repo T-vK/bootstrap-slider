@@ -1742,7 +1742,8 @@ const windowIsDefined = (typeof window === "object");
 
 				var eventPosition = ev[this.mousePos];
 				var sliderOffset = this._state.offset[this.stylePos];
-				var distanceToSlide = eventPosition - sliderOffset;
+                var scollOffset = this.$sliderElem.hasClass('slider-vertical') ? $(document).scrollTop() : $(document).scrollLeft();
+                var distanceToSlide = eventPosition - sliderOffset - scollOffset;
 				if(this.stylePos==='right') {
 					distanceToSlide = -distanceToSlide;
 				}
